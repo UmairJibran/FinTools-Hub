@@ -38,7 +38,7 @@ export function SWPInputs({ currency, onNext }: SWPInputsProps) {
                     name="swpStartYear"
                     label="SWP Start Year*"
                     control={control}
-                    placeholder="e.g., 25"
+                    placeholder="e.g., 25 years"
                 />
                 <NumericInput
                     name="monthlyWithdrawal"
@@ -51,6 +51,7 @@ export function SWPInputs({ currency, onNext }: SWPInputsProps) {
                     label="SWP Annual Increase (%)"
                     control={control}
                     placeholder="Default: 5%"
+                    showZero={true}
                 />
             </div>
             <Button 

@@ -24,9 +24,9 @@ export function SIPSWPCalculator() {
             initialInvestment: 0,
             monthlyContribution: 0,
             annualInterestRate: 0,
-            swpStartYear: 1,
+            swpStartYear: 25,
             monthlyWithdrawal: 0,
-            projectionYears: 1,
+            projectionYears: 0,
             sipAnnualIncrease: 5,
             swpAnnualIncrease: 5,
             currency: "PKR"

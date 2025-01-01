@@ -30,7 +30,7 @@ export function ProjectionInputs({ isCalculating, onSubmit }: ProjectionInputsPr
                     name="projectionYears"
                     label="Projection Years*"
                     control={control}
-                    placeholder="e.g., 60"
+                    placeholder="e.g., 30 years"
                 />
             </div>
             <Button 
