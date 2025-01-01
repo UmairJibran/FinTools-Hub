@@ -1,0 +1,1 @@
+export { SIPSWPCalculator } from './components/sip-swp-calculator'; 

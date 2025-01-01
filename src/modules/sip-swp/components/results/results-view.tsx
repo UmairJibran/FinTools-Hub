@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { InvestmentChart } from "@/components/calculator/investment-chart";
+import { InvestmentChart } from "../investment-chart";
 import { ResultsTable } from "../results-table";
 import { Button } from "@/components/ui/button";
 import { Edit2, Table, RefreshCw } from "lucide-react";
-import { CalculationResults } from "@/lib/types";
+import { CalculationResults } from "../../lib/types";
 
 interface ResultsViewProps {
     results: CalculationResults;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CalculatorInputs, CalculationResults } from "@/lib/types";
-import { calculateSIPSWP } from "@/lib/calculator";
+import { CalculatorInputs, CalculationResults } from "../lib/types";
+import { calculateSIPSWP } from "../lib/calculator";
 
 export function useCalculator() {
     const [isCalculating, setIsCalculating] = useState(false);

@@ -7,11 +7,11 @@ import { SIPInputs } from "./steps/sip-inputs";
 import { SWPInputs } from "./steps/swp-inputs";
 import { ProjectionInputs } from "./steps/projection-inputs";
 import { ResultsView } from "./results/results-view";
-import { useCalculator } from "@/hooks/use-calculator";
+import { useCalculator } from "../hooks/use-calculator";
 import { useForm, FormProvider } from "react-hook-form";
-import { CalculatorInputs, SupportedCurrency } from "@/lib/types";
+import { CalculatorInputs, SupportedCurrency } from "../lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { calculatorSchema } from "@/lib/schemas";
+import { calculatorSchema } from "../lib/schemas";
 
 type Step = "currency" | "sip" | "swp" | "projection" | "results";
 
