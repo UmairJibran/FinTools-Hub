@@ -2,11 +2,17 @@
   "name": "sip-swp",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UmairJibran/FinTools-Hub.git"
+  },
+  "author": "Umair Jibran <me@umairjibran.com>",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

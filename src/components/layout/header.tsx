@@ -29,7 +29,7 @@ export function Header() {
                 </div>
                 <div className="flex items-center gap-4">
                     <Button variant="ghost" size="icon" asChild>
-                        <Link href="https://github.com" target="_blank">
+                        <Link href="https://github.com/UmairJibran/FinTools-Hub" target="_blank">
                             <Github className="h-5 w-5" />
                         </Link>
                     </Button>
