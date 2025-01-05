@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { CalculatorInputs, CalculationResults } from "../lib/types";
-import { calculateSIPSWP } from "../lib/calculator";
 
-export function useCalculator() {
+import { calculateSIPSWP } from "../lib/calculator";
+import { CalculatorInputs, CalculationResults } from "../lib/types";
+
+export function useCalculator(): {
+    isCalculating: boolean;
+    results: CalculationResults | null;
+    error: string | null;
+    calculate: (values: CalculatorInputs) => Promise<void>;
+} {
     const [isCalculating, setIsCalculating] = useState(false);
     const [results, setResults] = useState<CalculationResults | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    const calculate = async (values: CalculatorInputs) => {
+    const calculate = async (values: CalculatorInputs): Promise<void> => {
         setIsCalculating(true);
         setError(null);
         try {

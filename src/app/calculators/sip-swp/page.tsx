@@ -1,6 +1,6 @@
 import { SIPSWPCalculator } from "@/modules/sip-swp";
 
-export default function SIPSWPPage() {
+export default function SIPSWPPage(): JSX.Element {
     return (
         <div className="py-10">
             <div className="container">

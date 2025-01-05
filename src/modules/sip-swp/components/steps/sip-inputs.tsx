@@ -1,25 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { NumericInput } from "../numeric-input";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useFormContext } from "react-hook-form";
-import { CalculatorInputs } from "@/lib/types";
+
+import { Button } from "@/components/ui/button";
+
+import { CalculatorInputs } from "../../lib/types";
+import { NumericInput } from "../numeric-input";
 
 interface SIPInputsProps {
     currency: string;
     onNext: () => void;
 }
 
-export function SIPInputs({ currency, onNext }: SIPInputsProps) {
-    const { control, trigger, watch, formState: { errors } } = useFormContext<CalculatorInputs>();
+export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
+    const { control, trigger, watch } = useFormContext<CalculatorInputs>();
 
     const monthlyContribution = watch("monthlyContribution");
     const annualInterestRate = watch("annualInterestRate");
     const hasRequiredFields = monthlyContribution > 0 && annualInterestRate > 0;
 
-    const handleNext = async () => {
+    const handleNext = async (): Promise<void> => {
         const isValid = await trigger(["monthlyContribution", "annualInterestRate", "sipAnnualIncrease"]);
         if (isValid) {
             onNext();

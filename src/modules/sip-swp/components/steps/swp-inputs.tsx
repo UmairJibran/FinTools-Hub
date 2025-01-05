@@ -1,25 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { NumericInput } from "../numeric-input";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useFormContext } from "react-hook-form";
-import { CalculatorInputs } from "@/lib/types";
+
+import { Button } from "@/components/ui/button";
+
+import { CalculatorInputs } from "../../lib/types";
+import { NumericInput } from "../numeric-input";
 
 interface SWPInputsProps {
     currency: string;
     onNext: () => void;
 }
 
-export function SWPInputs({ currency, onNext }: SWPInputsProps) {
-    const { control, trigger, watch, formState: { errors } } = useFormContext<CalculatorInputs>();
+export function SWPInputs({ currency, onNext }: SWPInputsProps): JSX.Element {
+    const { control, trigger, watch } = useFormContext<CalculatorInputs>();
 
     const swpStartYear = watch("swpStartYear");
     const monthlyWithdrawal = watch("monthlyWithdrawal");
     const hasRequiredFields = swpStartYear > 0 && monthlyWithdrawal > 0;
 
-    const handleNext = async () => {
+    const handleNext = async (): Promise<void> => {
         const isValid = await trigger(["swpStartYear", "monthlyWithdrawal"]);
         if (isValid) {
             onNext();

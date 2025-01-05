@@ -1,4 +1,4 @@
-import { CalculationResult } from "@/lib/types";
+import { CalculationResult } from "../lib/types";
 
 interface ResultsSummaryProps {
     isViable: boolean;
@@ -7,7 +7,7 @@ interface ResultsSummaryProps {
     currency: string;
 }
 
-export function ResultsSummary({ isViable, lastResult, swpStartYear, currency }: ResultsSummaryProps) {
+export function ResultsSummary({ isViable, lastResult, swpStartYear }: ResultsSummaryProps): JSX.Element {
     return (
         <p className="text-lg font-medium">
             {!isViable ? (

@@ -1,15 +1,17 @@
 "use client"
 
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { calculatorSchema } from "@/lib/schemas";
-import { CalculatorInputs } from "@/lib/types";
-import { NumericInput } from "@/components/calculator/numeric-input";
-import { CurrencySelect } from "@/components/calculator/currency-select";
-import { Button } from "@/components/ui/button";
 import { Loader2, TrendingUp } from "lucide-react";
-import { Form } from "@/components/ui/form";
 import React from "react";
+import { useForm } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+
+import { CurrencySelect } from "./currency-select";
+import { NumericInput } from "./numeric-input";
+import { calculatorSchema } from "../lib/schemas";
+import { CalculatorInputs } from "../lib/types";
 
 interface CalculatorFormProps {
     onCalculate: (values: CalculatorInputs) => Promise<void>;
@@ -18,7 +20,7 @@ interface CalculatorFormProps {
     onCurrencyChange: (currency: string) => void;
 }
 
-export function CalculatorForm({ onCalculate, isCalculating, onSwpYearChange, onCurrencyChange }: CalculatorFormProps) {
+export function CalculatorForm({ onCalculate, isCalculating, onSwpYearChange, onCurrencyChange }: CalculatorFormProps): JSX.Element {
     const form = useForm<CalculatorInputs>({
         resolver: zodResolver(calculatorSchema),
         defaultValues: {
@@ -104,7 +106,7 @@ export function CalculatorForm({ onCalculate, isCalculating, onSwpYearChange, on
                     )}
                 </Button>
             </form>
-            <input type="hidden" value={swpStartYear} onChange={() => {}} />
+            <input type="hidden" value={swpStartYear} onChange={() => { }} />
         </Form>
     );
 } 

@@ -1,22 +1,25 @@
 "use client"
 
-import { Input } from "@/components/ui/input";
 import { Control, Controller } from "react-hook-form";
+
+import { Input } from "@/components/ui/input";
+
+import { CalculatorInputs } from "../lib/types";
 
 interface NumericInputProps {
     name: string;
     label: string;
-    control: Control<any>;
+    control: Control<CalculatorInputs>;
     placeholder?: string;
     showZero?: boolean;
 }
 
-export function NumericInput({ name, label, control, placeholder, showZero = false }: NumericInputProps) {
+export function NumericInput({ name, label, control, placeholder, showZero = false }: NumericInputProps): JSX.Element {
     return (
         <div className="space-y-2">
             <label className="text-sm font-medium">{label}</label>
             <Controller
-                name={name}
+                name={name as keyof CalculatorInputs}
                 control={control}
                 render={({ field, fieldState: { error } }) => (
                     <div>

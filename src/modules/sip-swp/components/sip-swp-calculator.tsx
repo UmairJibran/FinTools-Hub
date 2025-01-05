@@ -1,21 +1,22 @@
 "use client"
 
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+
+import { ResultsView } from "./results/results-view";
 import { CurrencySelector } from "./steps/currency-selector";
+import { ProjectionInputs } from "./steps/projection-inputs";
 import { SIPInputs } from "./steps/sip-inputs";
 import { SWPInputs } from "./steps/swp-inputs";
-import { ProjectionInputs } from "./steps/projection-inputs";
-import { ResultsView } from "./results/results-view";
 import { useCalculator } from "../hooks/use-calculator";
-import { useForm, FormProvider } from "react-hook-form";
-import { CalculatorInputs, SupportedCurrency } from "../lib/types";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { calculatorSchema } from "../lib/schemas";
+import { CalculatorInputs, SupportedCurrency } from "../lib/types";
 
 type Step = "currency" | "sip" | "swp" | "projection" | "results";
 
-export function SIPSWPCalculator() {
+export function SIPSWPCalculator(): JSX.Element {
     const [step, setStep] = useState<Step>("currency");
     const { isCalculating, results, calculate } = useCalculator();
     const methods = useForm<CalculatorInputs>({
@@ -34,12 +35,12 @@ export function SIPSWPCalculator() {
         mode: "onChange"
     });
 
-    const handleCurrencySelect = (currency: SupportedCurrency) => {
+    const handleCurrencySelect = (currency: SupportedCurrency): void => {
         methods.setValue("currency", currency);
         setStep("sip");
     };
 
-    const handleCalculate = async (data: CalculatorInputs) => {
+    const handleCalculate = async (data: CalculatorInputs): Promise<void> => {
         await calculate(data);
         setStep("results");
     };

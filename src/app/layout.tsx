@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
-import { Header } from "@/components/layout/header";
+
 import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
@@ -15,7 +16,7 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-}) {
+}): JSX.Element {
     return (
         <html lang="en">
             <body className={inter.className}>

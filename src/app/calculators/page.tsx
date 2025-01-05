@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Calculator } from "lucide-react";
+import Link from "next/link";
 
 export default function CalculatorsPage(): JSX.Element {
   return (

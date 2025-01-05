@@ -1,12 +1,17 @@
 "use client"
 
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Edit2, Table, RefreshCw } from "lucide-react";
+import { useState } from "react";
+
+import { Button } from "@/components/ui/button";
+
+import { CalculationResults } from "../../lib/types";
 import { InvestmentChart } from "../investment-chart";
 import { ResultsTable } from "../results-table";
-import { Button } from "@/components/ui/button";
-import { Edit2, Table, RefreshCw } from "lucide-react";
-import { CalculationResults } from "../../lib/types";
+
+
+
 
 interface ResultsViewProps {
     results: CalculationResults;
@@ -16,7 +21,7 @@ interface ResultsViewProps {
     onReset: () => void;
 }
 
-export function ResultsView({ results, swpStartYear, currency, onEdit, onReset }: ResultsViewProps) {
+export function ResultsView({ results, swpStartYear, currency, onEdit, onReset }: ResultsViewProps): JSX.Element {
     const [showTable, setShowTable] = useState(false);
 
     return (

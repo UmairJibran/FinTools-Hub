@@ -1,6 +1,7 @@
 "use client"
 
 import { ResponsiveLine } from "@nivo/line";
+
 import { CalculationResults } from "../lib/types";
 
 interface InvestmentChartProps {
@@ -9,7 +10,7 @@ interface InvestmentChartProps {
     currency: string;
 }
 
-export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChartProps) {
+export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChartProps): JSX.Element {
     // Split data into SIP and SWP phases
     const sipData = data.filter(item => item.year < swpStartYear).map((item) => ({
         x: `${item.year}-${item.month}`,

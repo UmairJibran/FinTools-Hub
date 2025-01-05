@@ -2,9 +2,10 @@
 
 import { Github } from "lucide-react";
 import Link from "next/link";
+
 import { Button } from "../ui/button";
 
-export function Header() {
+export function Header(): JSX.Element {
     return (
         <header className="border-b">
             <div className="container flex h-16 items-center justify-between">

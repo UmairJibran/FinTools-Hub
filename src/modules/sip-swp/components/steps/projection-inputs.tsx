@@ -1,22 +1,23 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { NumericInput } from "../numeric-input";
-import { Button } from "@/components/ui/button";
 import { Loader2, TrendingUp } from "lucide-react";
 import { useFormContext } from "react-hook-form";
-import { CalculatorInputs } from "@/lib/types";
+
+import { Button } from "@/components/ui/button";
+
+import { CalculatorInputs } from "../../lib/types";
+import { NumericInput } from "../numeric-input";
 
 interface ProjectionInputsProps {
     isCalculating: boolean;
     onSubmit: (data: CalculatorInputs) => Promise<void>;
 }
 
-export function ProjectionInputs({ isCalculating, onSubmit }: ProjectionInputsProps) {
+export function ProjectionInputs({ isCalculating, onSubmit }: ProjectionInputsProps): JSX.Element {
     const { control, handleSubmit, watch } = useFormContext<CalculatorInputs>();
     
     const projectionYears = watch("projectionYears");
-    const hasRequiredFields = projectionYears > 0;
 
     return (
         <motion.div

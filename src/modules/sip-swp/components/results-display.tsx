@@ -1,8 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalculationResults } from "@/lib/types";
-import { InvestmentChart } from "@/components/calculator/investment-chart";
 import { motion } from "framer-motion";
-import { ResultsSummary } from "@/components/calculator/results-summary";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+import { InvestmentChart } from "./investment-chart";
+import { ResultsSummary } from "./results-summary";
+import { CalculationResults } from "../lib/types";
 
 interface ResultsDisplayProps {
     results: CalculationResults;
@@ -10,7 +12,7 @@ interface ResultsDisplayProps {
     currency: string;
 }
 
-export function ResultsDisplay({ results, swpStartYear, currency }: ResultsDisplayProps) {
+export function ResultsDisplay({ results, swpStartYear, currency }: ResultsDisplayProps): JSX.Element | null {
     if (!results.length) return null;
 
     const lastResult = results[results.length - 1];
@@ -29,7 +31,7 @@ export function ResultsDisplay({ results, swpStartYear, currency }: ResultsDispl
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-4">
-                        <ResultsSummary 
+                        <ResultsSummary
                             isViable={isViable}
                             lastResult={lastResult}
                             swpStartYear={swpStartYear}
@@ -38,9 +40,9 @@ export function ResultsDisplay({ results, swpStartYear, currency }: ResultsDispl
                         {isViable && (
                             <>
                                 <p>Final portfolio value: {lastResult.total}</p>
-                                <InvestmentChart 
-                                    data={results} 
-                                    swpStartYear={swpStartYear} 
+                                <InvestmentChart
+                                    data={results}
+                                    swpStartYear={swpStartYear}
                                     currency={currency}
                                 />
                             </>

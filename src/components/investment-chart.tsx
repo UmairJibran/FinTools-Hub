@@ -23,8 +23,7 @@ interface InvestmentChartProps {
     swpStartYear: number;
 }
 
-export function InvestmentChart({ data, swpStartYear }: InvestmentChartProps) {
-    const currentYear = new Date().getFullYear();
+export function InvestmentChart({ data, swpStartYear }: InvestmentChartProps): JSX.Element {
     const formattedData = data.map((item, index) => ({
         time: '',
         total: parseFloat(item.total.replace(/[^0-9.-]+/g, "")),
@@ -53,7 +52,7 @@ export function InvestmentChart({ data, swpStartYear }: InvestmentChartProps) {
                     />
                     <YAxis
                         domain={[0, 'auto']}
-                        tickFormatter={(value) => 
+                        tickFormatter={(value) =>
                             new Intl.NumberFormat('en-US', {
                                 notation: 'compact',
                                 compactDisplay: 'short',
@@ -61,19 +60,19 @@ export function InvestmentChart({ data, swpStartYear }: InvestmentChartProps) {
                         }
                     />
                     <Tooltip
-                        content={({ active, payload, label }) => {
+                        content={({ active, payload }) => {
                             if (active && payload && payload.length) {
                                 return (
                                     <div className="bg-white p-2 border rounded shadow">
                                         <p className="font-medium">Year {payload[0].payload.year}</p>
-                                        {payload.map((entry: any) => (
-                                            <p key={entry.name} style={{ color: entry.color }}>
+                                        {payload.map((entry) => (
+                                            <p key={entry.name as string} style={{ color: entry.color }}>
                                                 {entry.name}: {new Intl.NumberFormat('en-US', {
                                                     style: 'currency',
                                                     currency: 'PKR',
                                                     minimumFractionDigits: 0,
                                                     maximumFractionDigits: 0,
-                                                }).format(Math.max(entry.value, 0))}
+                                                }).format(Math.max(entry.value as number, 0))}
                                             </p>
                                         ))}
                                     </div>

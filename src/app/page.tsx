@@ -1,8 +1,9 @@
+import { Calculator, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Calculator, Newspaper, BookOpen, ArrowRight } from "lucide-react";
 
-export default function HomePage() {
+import { Button } from "@/components/ui/button";
+
+export default function HomePage(): JSX.Element {
     return (
         <div className="py-20">
             <div className="container">

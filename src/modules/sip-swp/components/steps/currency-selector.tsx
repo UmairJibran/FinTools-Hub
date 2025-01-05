@@ -1,7 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion";
-import { SupportedCurrency } from "@/lib/types";
+
+import { SupportedCurrency } from "../../lib/types";
 
 const CURRENCY_INFO = {
     PKR: { symbol: "₨", name: "Pakistani Rupee" },
@@ -15,7 +16,7 @@ interface CurrencySelectorProps {
     onSelect: (currency: SupportedCurrency) => void;
 }
 
-export function CurrencySelector({ onSelect }: CurrencySelectorProps) {
+export function CurrencySelector({ onSelect }: CurrencySelectorProps): JSX.Element {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -8,7 +8,8 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { CalculationResults } from "@/lib/types";
+
+import { CalculationResult, CalculationResults } from "../lib/types";
 
 const MONTHS = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -21,7 +22,7 @@ interface ResultsTableProps {
     swpStartYear: number;
 }
 
-export function ResultsTable({ results, currency, swpStartYear }: ResultsTableProps) {
+export function ResultsTable({ results, swpStartYear }: ResultsTableProps): JSX.Element {
     return (
         <Table>
             <TableHeader>
@@ -33,7 +34,7 @@ export function ResultsTable({ results, currency, swpStartYear }: ResultsTablePr
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {results.map((result) => (
+                {results.map((result: CalculationResult) => (
                     <TableRow key={`${result.year}-${result.month}`}>
                         <TableCell>{result.year}</TableCell>
                         <TableCell>{MONTHS[result.month - 1]}</TableCell>

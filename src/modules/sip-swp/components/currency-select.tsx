@@ -1,14 +1,16 @@
 "use client"
 
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Control } from "react-hook-form";
-import { CalculatorInputs } from "@/lib/types";
+
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+
+import { CalculatorInputs } from "../lib/types";
 
 interface CurrencySelectProps {
     control: Control<CalculatorInputs>;
 }
 
-export function CurrencySelect({ control }: CurrencySelectProps) {
+export function CurrencySelect({ control }: CurrencySelectProps): JSX.Element {
     return (
         <FormField
             control={control}
