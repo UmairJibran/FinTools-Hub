@@ -17,7 +17,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@nivo/line": "^0.88.0",
-    "@radix-ui/react-form": "^0.0.3",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",
