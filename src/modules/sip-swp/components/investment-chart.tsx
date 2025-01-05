@@ -40,7 +40,12 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                     color: "rgb(239, 68, 68)" // red-500
                 }
             ]}
-            margin={{ top: 50, right: 110, bottom: 50, left: 100 }}
+            margin={{ 
+                top: 20,
+                right: 40,
+                bottom: 20,
+                left: 70
+            }}
             xScale={{
                 type: "point",
             }}

@@ -10,9 +10,6 @@ import { CalculationResults } from "../../lib/types";
 import { InvestmentChart } from "../investment-chart";
 import { ResultsTable } from "../results-table";
 
-
-
-
 interface ResultsViewProps {
     results: CalculationResults;
     swpStartYear: number;
@@ -25,37 +22,42 @@ export function ResultsView({ results, swpStartYear, currency, onEdit, onReset }
     const [showTable, setShowTable] = useState(false);
 
     return (
-        <div className="space-y-4 max-w-full">
-            <div className="flex justify-between items-center">
-                <div className="space-x-2">
-                    <Button variant="outline" onClick={onEdit}>
+        <div className="-mx-4 sm:mx-0 space-y-4">
+            <div className="px-2 sm:px-0 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0">
+                <div className="flex gap-2 w-full sm:w-auto">
+                    <Button variant="outline" onClick={onEdit} className="flex-1 sm:flex-none">
                         <Edit2 className="mr-2 h-4 w-4" />
-                        Edit Parameters
+                        Edit Params
                     </Button>
-                    <Button variant="outline" onClick={onReset}>
+                    <Button variant="outline" onClick={onReset} className="flex-1 sm:flex-none">
                         <RefreshCw className="mr-2 h-4 w-4" />
-                        Start Over
+                        Reset
                     </Button>
                 </div>
                 <Button 
                     variant="outline" 
                     onClick={() => setShowTable(!showTable)}
+                    className="w-full sm:w-auto"
                 >
                     <Table className="mr-2 h-4 w-4" />
                     {showTable ? "Hide Table" : "Show Table"}
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full min-h-[500px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full">
                 <motion.div
                     layout
-                    className={`w-full h-[500px] ${showTable ? "" : "md:col-span-2"}`}
+                    className={`w-full h-[300px] sm:h-[500px] ${showTable ? "" : "md:col-span-2"}`}
                 >
-                    <InvestmentChart 
-                        data={results} 
-                        swpStartYear={swpStartYear}
-                        currency={currency}
-                    />
+                    <div className="-mx-4 sm:mx-0 h-full">
+                        <div className="h-full w-full">
+                            <InvestmentChart 
+                                data={results} 
+                                swpStartYear={swpStartYear}
+                                currency={currency}
+                            />
+                        </div>
+                    </div>
                 </motion.div>
 
                 <AnimatePresence>
@@ -64,7 +66,7 @@ export function ResultsView({ results, swpStartYear, currency, onEdit, onReset }
                             initial={{ opacity: 0, x: 100 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 100 }}
-                            className="w-full h-[500px] overflow-auto border rounded-lg"
+                            className="w-full h-[300px] sm:h-[500px] overflow-auto border rounded-lg"
                         >
                             <ResultsTable 
                                 results={results}
