@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "FinTools Hub - Financial Calculators & Tools",
+    title: "FinHub - Financial Calculators & Tools",
     description: "A collection of financial calculators and tools to help you make better financial decisions.",
 };
 

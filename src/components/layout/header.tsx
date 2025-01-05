@@ -11,7 +11,7 @@ export function Header(): JSX.Element {
             <div className="container flex h-16 items-center justify-between">
                 <div className="flex gap-6 items-center">
                     <Link href="/" className="text-xl font-bold">
-                        FinTools Hub
+                        FinHub
                     </Link>
                     <nav className="hidden md:flex gap-6">
                         <Link href="/calculators" className="text-sm font-medium">

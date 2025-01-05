@@ -1,4 +1,4 @@
-# FinTools Hub
+# FinHub
 
 A comprehensive financial tools platform built with Next.js, focusing on helping users make better financial decisions.
 
@@ -25,7 +25,7 @@ A comprehensive financial tools platform built with Next.js, focusing on helping
 
 1. Clone the repository
 ```bash
-git clone https://github.com/UmairJibran/FinTools-Hub.git
+git clone https://github.com/UmairJibran/FinHub.git
 ```
 
 2. Install dependencies

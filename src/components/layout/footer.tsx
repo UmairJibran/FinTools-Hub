@@ -14,7 +14,7 @@ export function Footer(): JSX.Element {
                     </a>
                 </p>
                 <p className="text-sm text-muted-foreground">
-                    © {new Date().getFullYear()} FinTools Hub. All rights reserved.
+                    © {new Date().getFullYear()} FinHub. All rights reserved.
                 </p>
             </div>
         </footer>
