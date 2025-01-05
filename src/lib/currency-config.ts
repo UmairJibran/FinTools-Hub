@@ -40,9 +40,11 @@ export function formatNumber(value: number, currency: string): string {
 
     if (config.numberSystem === 'southAsian') {
         if (value >= 10000000) { // 1 Crore
-            return `${(value / 10000000).toFixed(2)} Cr`;
+            const crValue = value / 10000000;
+            return `${Number.isInteger(crValue) ? crValue : crValue.toFixed(2)} Cr`;
         } else if (value >= 100000) { // 1 Lac
-            return `${(value / 100000).toFixed(2)} Lac`;
+            const lacValue = value / 100000;
+            return `${Number.isInteger(lacValue) ? lacValue : lacValue.toFixed(2)} Lac`;
         } else if (value >= 1000) {
             return value.toLocaleString('en-IN');
         }
@@ -50,9 +52,11 @@ export function formatNumber(value: number, currency: string): string {
 
     // Western number system
     if (value >= 1000000000) { // 1 Billion
-        return `${(value / 1000000000).toFixed(2)}B`;
+        const bValue = value / 1000000000;
+        return `${Number.isInteger(bValue) ? bValue : bValue.toFixed(2)}B`;
     } else if (value >= 1000000) { // 1 Million
-        return `${(value / 1000000).toFixed(2)}M`;
+        const mValue = value / 1000000;
+        return `${Number.isInteger(mValue) ? mValue : mValue.toFixed(2)}M`;
     } else if (value >= 1000) {
         return value.toLocaleString('en-US');
     }
