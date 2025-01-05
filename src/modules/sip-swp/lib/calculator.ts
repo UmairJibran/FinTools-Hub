@@ -4,7 +4,7 @@ export function calculateSIPSWP(inputs: CalculatorInputs): CalculationResults {
     const {
         initialInvestment,
         monthlyContribution,
-        annualInterestRate,
+        annualInterestRate = 0,
         swpStartYear,
         monthlyWithdrawal,
         projectionYears,
@@ -14,13 +14,13 @@ export function calculateSIPSWP(inputs: CalculatorInputs): CalculationResults {
     } = inputs;
 
     // Validate inputs to prevent NaN
-    if (!monthlyContribution || !annualInterestRate || !swpStartYear || !monthlyWithdrawal || !projectionYears) {
+    if (!monthlyContribution || !swpStartYear || !monthlyWithdrawal || !projectionYears) {
         throw new Error("Missing required inputs");
     }
 
-    const monthlyReturn = Math.pow(1 + (annualInterestRate / 100), 1/12) - 1;
+    const monthlyReturn = Math.pow(1 + (annualInterestRate / 100), 1 / 12) - 1;
     const results: CalculationResults = [];
-    
+
     let currentBalance = initialInvestment || 0;
     let currentWithdrawal = monthlyWithdrawal;
     let currentContribution = monthlyContribution;
@@ -29,7 +29,7 @@ export function calculateSIPSWP(inputs: CalculatorInputs): CalculationResults {
     try {
         for (let year = 1; year <= projectionYears; year++) {
             lastYear = year;
-            
+
             // Increase amounts at the start of each year (after first year)
             if (year > 1) {
                 if (year <= swpStartYear) {

@@ -19,7 +19,7 @@ export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
 
     const monthlyContribution = watch("monthlyContribution");
     const annualInterestRate = watch("annualInterestRate");
-    const hasRequiredFields = monthlyContribution > 0 && annualInterestRate > 0;
+    const hasRequiredFields = monthlyContribution > 0 && annualInterestRate >= 0;
 
     const handleNext = async (): Promise<void> => {
         const isValid = await trigger(["monthlyContribution", "annualInterestRate", "sipAnnualIncrease"]);
@@ -51,9 +51,10 @@ export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
                 />
                 <NumericInput
                     name="annualInterestRate"
-                    label="Expected Annual Return (%)*"
+                    label="Expected Annual Return (%)"
                     control={control}
                     placeholder="Enter expected return (e.g., 12)"
+                    showZero={true}
                 />
                 <NumericInput
                     name="sipAnnualIncrease"
@@ -63,8 +64,8 @@ export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
                     showZero={true}
                 />
             </div>
-            <Button 
-                onClick={handleNext} 
+            <Button
+                onClick={handleNext}
                 className="w-full"
                 disabled={!hasRequiredFields}
             >
