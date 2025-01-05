@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 
 import { CalculationResult, CalculationResults } from "../lib/types";
+import { formatCurrency } from "@/lib/currency-config";
 
 const MONTHS = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
@@ -22,7 +23,7 @@ interface ResultsTableProps {
     swpStartYear: number;
 }
 
-export function ResultsTable({ results, swpStartYear }: ResultsTableProps): JSX.Element {
+export function ResultsTable({ results, swpStartYear, currency }: ResultsTableProps): JSX.Element {
     return (
         <Table>
             <TableHeader>
@@ -38,9 +39,9 @@ export function ResultsTable({ results, swpStartYear }: ResultsTableProps): JSX.
                     <TableRow key={`${result.year}-${result.month}`}>
                         <TableCell>{result.year}</TableCell>
                         <TableCell>{MONTHS[result.month - 1]}</TableCell>
-                        <TableCell>{result.total}</TableCell>
+                        <TableCell>{currency} {formatCurrency(result.total, currency)}</TableCell>
                         <TableCell className={result.year >= swpStartYear ? "text-red-500" : "text-green-500"}>
-                            {result.year >= swpStartYear ? `-${result.contribution}` : result.contribution}
+                            {result.year >= swpStartYear ? `-${currency} ${formatCurrency(result.contribution, currency)}` : `${currency} ${formatCurrency(result.contribution, currency)}`}
                         </TableCell>
                     </TableRow>
                 ))}

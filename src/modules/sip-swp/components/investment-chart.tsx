@@ -1,7 +1,7 @@
 "use client"
 
 import { ResponsiveLine } from "@nivo/line";
-
+import { formatCurrency } from "@/lib/currency-config";
 import { CalculationResults } from "../lib/types";
 
 interface InvestmentChartProps {
@@ -54,8 +54,8 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                format: (value) => 
-                    `${currency} ${(value / 1000000).toFixed(1)}M`,
+                format: (value) =>
+                    `${currency} ${formatCurrency(value, currency)}`,
             }}
             enablePoints={false}
             enableGridX={false}
@@ -97,7 +97,6 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                 const isSWP = point.serieId === "swp";
                 const [year, month] = data.x.split("-");
                 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                
                 return (
                     <div className="bg-white p-2 shadow-lg rounded-lg border">
                         <p className="text-xs text-gray-500 font-medium mb-2">
@@ -109,13 +108,13 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                                     {isSWP ? "Monthly Withdrawal" : "Monthly Contribution"}
                                 </p>
                                 <p className={`text-sm font-medium ${isSWP ? "text-red-500" : "text-green-500"}`}>
-                                    {data.contribution}
+                                  {currency} {formatCurrency(data.contribution, currency)}
                                 </p>
                             </div>
                             <div>
                                 <p className="text-xs text-gray-500">Portfolio Value</p>
                                 <p className="text-sm font-medium text-blue-500">
-                                    {currency} {Number(data.y).toLocaleString()}
+                                    {currency} {formatCurrency(Number(data.y), currency)}
                                 </p>
                             </div>
                         </div>
