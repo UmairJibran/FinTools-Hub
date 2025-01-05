@@ -53,7 +53,6 @@ export function SWPInputs({ currency, onNext }: SWPInputsProps): JSX.Element {
                     label="SWP Annual Increase (%)"
                     control={control}
                     placeholder="Default: 5%"
-                    showZero={true}
                 />
             </div>
             <Button 

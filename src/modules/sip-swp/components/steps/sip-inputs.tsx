@@ -41,7 +41,6 @@ export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
                     label={`Initial Investment (${currency})`}
                     control={control}
                     placeholder="Enter initial amount (optional)"
-                    showZero={true}
                 />
                 <NumericInput
                     name="monthlyContribution"
@@ -54,14 +53,12 @@ export function SIPInputs({ currency, onNext }: SIPInputsProps): JSX.Element {
                     label="Expected Annual Return (%)"
                     control={control}
                     placeholder="Enter expected return (e.g., 12)"
-                    showZero={true}
                 />
                 <NumericInput
                     name="sipAnnualIncrease"
                     label="SIP Annual Increase (%)"
                     control={control}
                     placeholder="Default: 5%"
-                    showZero={true}
                 />
             </div>
             <Button
