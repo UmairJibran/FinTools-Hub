@@ -35,16 +35,23 @@ export function ResultsTable({ results, swpStartYear, currency }: ResultsTablePr
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {results.map((result: CalculationResult) => (
-                    <TableRow key={`${result.year}-${result.month}`}>
-                        <TableCell>{result.year}</TableCell>
-                        <TableCell>{MONTHS[result.month - 1]}</TableCell>
-                        <TableCell>{currency} {formatCurrency(result.total, currency)}</TableCell>
-                        <TableCell className={result.year >= swpStartYear ? "text-red-500" : "text-green-500"}>
-                            {result.year >= swpStartYear ? `-${currency} ${formatCurrency(result.contribution, currency)}` : `${currency} ${formatCurrency(result.contribution, currency)}`}
-                        </TableCell>
-                    </TableRow>
-                ))}
+                {results.map((result: CalculationResult, index: number) => {
+                    const prevValue = index > 0 ? parseFloat(results[index - 1].total.replace(/[^0-9.-]+/g, "")) : 0;
+                    const currentValue = parseFloat(result.total.replace(/[^0-9.-]+/g, ""));
+                    const change = currentValue - prevValue;
+                    const isIncrease = change >= 0;
+
+                    return (
+                        <TableRow key={`${result.year}-${result.month}`}>
+                            <TableCell>{result.year}</TableCell>
+                            <TableCell>{MONTHS[result.month - 1]}</TableCell>
+                            <TableCell>{isIncrease ? "🔺" : "🔻"} {currency} {formatCurrency(result.total, currency)}</TableCell>
+                            <TableCell className={result.year >= swpStartYear ? "text-red-500" : "text-green-500"}>
+                                {result.year >= swpStartYear ? `-${currency} ${formatCurrency(result.contribution, currency)}` : `${currency} ${formatCurrency(result.contribution, currency)}`}
+                            </TableCell>
+                        </TableRow>
+                    );
+                })}
             </TableBody>
         </Table>
     );
