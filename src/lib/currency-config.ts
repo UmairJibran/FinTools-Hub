@@ -73,5 +73,5 @@ export function formatCurrency(value: number | string, currency: string): string
     if (!config) return `${currency} ${value.toLocaleString()}`;
 
     const formattedNumber = formatNumber(value, currency);
-    return `${formattedNumber}`;
+    return `${config.symbol} ${formattedNumber}`;
 } 

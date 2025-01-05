@@ -62,7 +62,7 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                 tickPadding: 5,
                 tickRotation: 0,
                 format: (value) =>
-                    `${currency} ${formatCurrency(value, currency)}`,
+                    `${formatCurrency(value, currency)}`,
             }}
             enablePoints={false}
             enableGridX={false}
@@ -115,13 +115,13 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                                     {isSWP ? "Monthly Withdrawal" : "Monthly Contribution"}
                                 </p>
                                 <p className={`text-sm font-medium ${isSWP ? "text-red-500" : "text-green-500"}`}>
-                                    {currency} {formatCurrency(data.contribution, currency)}
+                                    {formatCurrency(data.contribution, currency)}
                                 </p>
                             </div>
                             <div>
                                 <p className="text-xs text-gray-500">Portfolio Value</p>
                                 <p className="text-sm font-medium text-blue-500">
-                                    {currency} {formatCurrency(Number(data.y), currency)}
+                                    {formatCurrency(Number(data.y), currency)}
                                 </p>
                             </div>
                         </div>

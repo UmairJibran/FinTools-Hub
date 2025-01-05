@@ -45,9 +45,9 @@ export function ResultsTable({ results, swpStartYear, currency }: ResultsTablePr
                         <TableRow key={`${result.year}-${result.month}`}>
                             <TableCell>{result.year}</TableCell>
                             <TableCell>{MONTHS[result.month - 1]}</TableCell>
-                            <TableCell>{isIncrease ? "🔺" : "🔻"} {currency} {formatCurrency(result.total, currency)}</TableCell>
+                            <TableCell>{isIncrease ? "🔺" : "🔻"} {formatCurrency(result.total, currency)}</TableCell>
                             <TableCell className={result.year >= swpStartYear ? "text-red-500" : "text-green-500"}>
-                                {result.year >= swpStartYear ? `-${currency} ${formatCurrency(result.contribution, currency)}` : `${currency} ${formatCurrency(result.contribution, currency)}`}
+                                {result.year >= swpStartYear ? `-${formatCurrency(result.contribution, currency)}` : `${formatCurrency(result.contribution, currency)}`}
                             </TableCell>
                         </TableRow>
                     );
