@@ -1,7 +1,9 @@
 "use client"
 
 import { ResponsiveLine } from "@nivo/line";
+
 import { formatCurrency } from "@/lib/currency-config";
+
 import { CalculationResults } from "../lib/types";
 
 interface InvestmentChartProps {
@@ -108,7 +110,7 @@ export function InvestmentChart({ data, swpStartYear, currency }: InvestmentChar
                                     {isSWP ? "Monthly Withdrawal" : "Monthly Contribution"}
                                 </p>
                                 <p className={`text-sm font-medium ${isSWP ? "text-red-500" : "text-green-500"}`}>
-                                  {currency} {formatCurrency(data.contribution, currency)}
+                                    {currency} {formatCurrency(data.contribution, currency)}
                                 </p>
                             </div>
                             <div>

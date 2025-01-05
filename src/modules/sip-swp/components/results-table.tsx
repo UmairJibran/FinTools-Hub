@@ -8,9 +8,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+import { formatCurrency } from "@/lib/currency-config";
 
 import { CalculationResult, CalculationResults } from "../lib/types";
-import { formatCurrency } from "@/lib/currency-config";
 
 const MONTHS = [
     'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
