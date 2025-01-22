@@ -1,4 +1,4 @@
-import { ArrowLeft, Calculator } from "lucide-react";
+import { ArrowLeft, Calculator, Coins } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,21 @@ export default function CalculatorsPage(): JSX.Element {
           <div className="flex justify-end">
             <Button asChild>
               <Link href="/calculators/sip-swp">
+                Try Calculator
+              </Link>
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative p-6 border rounded-lg hover:border-primary transition-colors">
+          <Coins className="w-12 h-12 mb-4" />
+          <h2 className="text-lg font-semibold mb-2">Zakat Calculator</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            Calculate your annual Zakat obligation with our easy-to-use calculator
+          </p>
+          <div className="flex justify-end">
+            <Button asChild>
+              <Link href="/calculators/zakat">
                 Try Calculator
               </Link>
             </Button>
