@@ -1,4 +1,10 @@
 import { SIPSWPCalculator } from "@/modules/sip-swp";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "FinHub | SIP to SWP Calculator",
+    description: "Plan your investment journey from Systematic Investment Plan (SIP) to Systematic Withdrawal Plan (SWP) with our advanced calculator.",
+}
 
 export default function SIPSWPPage(): JSX.Element {
     return (
@@ -9,7 +15,7 @@ export default function SIPSWPPage(): JSX.Element {
                         SIP to SWP Calculator
                     </h1>
                     <p className="text-muted-foreground">
-                        Plan your investment journey from Systematic Investment Plan (SIP) 
+                        Plan your investment journey from Systematic Investment Plan (SIP)
                         to Systematic Withdrawal Plan (SWP) with our advanced calculator.
                     </p>
                 </div>
