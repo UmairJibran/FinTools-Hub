@@ -1,5 +1,6 @@
-import { SIPSWPCalculator } from "@/modules/sip-swp";
 import { Metadata } from "next";
+
+import { SIPSWPCalculator } from "@/modules/sip-swp";
 
 export const metadata: Metadata = {
     title: "FinHub | SIP to SWP Calculator",

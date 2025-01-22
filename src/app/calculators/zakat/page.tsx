@@ -1,5 +1,6 @@
-import { ZakatCalculator } from "@/modules/zakat/components/zakat-calculator";
 import { Metadata } from "next";
+
+import { ZakatCalculator } from "@/modules/zakat/components/zakat-calculator";
 
 export const metadata: Metadata = {
     title: "FinHub | Zakat Calculator",
