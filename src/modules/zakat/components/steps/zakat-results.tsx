@@ -3,17 +3,17 @@
 import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ZakatResultsProps {
     amount: number;
     netWorth: number;
     currency: string;
+    nisabThreshold: number;
     onEdit: () => void;
     onReset: () => void;
 }
 
-export function ZakatResults({ amount, netWorth, currency, onEdit, onReset }: ZakatResultsProps): React.ReactNode {
+export function ZakatResults({ amount, netWorth, currency, nisabThreshold, onEdit, onReset }: ZakatResultsProps): React.ReactNode {
     const formatCurrency = (value: number): string => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
@@ -30,11 +30,7 @@ export function ZakatResults({ amount, netWorth, currency, onEdit, onReset }: Za
             exit={{ opacity: 0, y: -20 }}
             className="max-w-3xl mx-auto"
         >
-            <Card>
-                <CardHeader>
-                    <CardTitle>Your Zakat Calculation</CardTitle>
-                </CardHeader>
-                <CardContent>
+            <div className="space-y-6">
                     <div className="text-center space-y-6">
                         <div>
                             <p className="text-lg mb-2">Your Annual Zakat Amount:</p>
@@ -43,16 +39,31 @@ export function ZakatResults({ amount, netWorth, currency, onEdit, onReset }: Za
                             </p>
                         </div>
 
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div className="p-4 border rounded-lg">
+                                <p className="text-sm text-muted-foreground mb-1">Nisab Threshold</p>
+                                <p className="text-xl font-semibold">{formatCurrency(nisabThreshold)}</p>
+                            </div>
+                            <div className="p-4 border rounded-lg">
+                                <p className="text-sm text-muted-foreground mb-1">Your Net Worth</p>
+                                <p className="text-xl font-semibold">{formatCurrency(netWorth)}</p>
+                            </div>
+                        </div>
                         <div className="space-y-2 text-sm text-muted-foreground">
                             <p>
-                                This amount represents 2.5% of your net worth above the Nisab threshold. Nisab is {formatCurrency(netWorth)}
+                                {netWorth >= nisabThreshold
+                                    ? `Based on your net worth of ${formatCurrency(netWorth)}, which is above the Nisab threshold of ${formatCurrency(nisabThreshold)}, you are required to pay Zakat.`
+                                    : `Your net worth of ${formatCurrency(netWorth)} is below the Nisab threshold of ${formatCurrency(nisabThreshold)}. Therefore, you are not required to pay Zakat this year.`
+                                }
                             </p>
                             <p>
-                                The Nisab is the minimum amount of wealth a Muslim must possess before being obligated to pay Zakat.
+                                {netWorth >= nisabThreshold
+                                    ? `Your Zakat amount is calculated as 2.5% of your total net worth, which comes to ${formatCurrency(amount)}.`
+                                    : "Zakat becomes obligatory only when your wealth exceeds the Nisab threshold."}
                             </p>
                             <br />
                             <em>
-                                Please note that this is a simplified calculation and may not reflect the exact requirements of Islamic law, please consult a scholar for more information.
+                                This calculation is based on the lunar calendar year. For the most accurate guidance on your Zakat obligations, please consult with a qualified Islamic scholar who can consider your specific circumstances.
                             </em>
                         </div>
 
@@ -65,8 +76,7 @@ export function ZakatResults({ amount, netWorth, currency, onEdit, onReset }: Za
                             </Button>
                         </div>
                     </div>
-                </CardContent>
-            </Card>
+            </div>
         </motion.div>
     );
-} 
+}

@@ -65,11 +65,8 @@ export function NisabCalculator({ setNisabThreshold, currency, onNext }: NisabCa
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
         >
-            <Card>
-                <CardHeader>
-                    <CardTitle>Calculate Nisab Threshold</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
+            <div className="space-y-6">
+                <h2 className="text-2xl font-semibold">Calculate Nisab Threshold</h2>
                     <div>
                         <p className="text-sm text-muted-foreground mb-4">
                             Nisab is the minimum amount of wealth a Muslim must possess before being obligated to pay Zakat.
@@ -152,8 +149,7 @@ export function NisabCalculator({ setNisabThreshold, currency, onNext }: NisabCa
                     >
                         Next <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                </CardContent>
-            </Card>
+            </div>
         </motion.div>
     );
-} 
+}

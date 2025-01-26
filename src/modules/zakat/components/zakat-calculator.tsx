@@ -116,6 +116,7 @@ export function ZakatCalculator(): React.ReactNode {
                                 amount={zakatAmount}
                                 netWorth={netWorth || 0}
                                 currency={methods.watch("currency")}
+                                nisabThreshold={nisabThreshold}
                                 onEdit={() => setStep("assets")}
                                 onReset={() => {
                                     methods.reset();
@@ -128,4 +129,4 @@ export function ZakatCalculator(): React.ReactNode {
             </FormProvider>
         </div>
     );
-} 
+}
